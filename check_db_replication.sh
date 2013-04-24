@@ -68,7 +68,7 @@ fi
 #Get the status of the last synchronization
 TEST_VARIABLE=`mysql -h ${HOST} -u ${MYSQL_USER} -p${MYSQL_PWD} -P ${PORT} -e 'show slave status\G' | awk '$1=="Seconds_Behind_Master:" {print $2}'`
 
-if [[ -n "$TEST_VARIABLE" ]]
+if [[ "x$TEST_VARIABLE" != "xNULL" ]]
 then
     if [[ -n "${MASTER}" && "${SLAVE}" ]]
     then
